@@ -54,7 +54,7 @@ m(dv/dt) = -γv + η(t)
 
 ### Sample Output
 
-![Langevin Output](langevin_output.png)
+One Particle Simulation.png
 
 ## Concepts Used
 
