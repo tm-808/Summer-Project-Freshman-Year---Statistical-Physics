@@ -21,3 +21,45 @@ Random Number Plots tending to Gaussian Distribution.pdf
 - Gaussian Distribution
 - Central Limit Theorem
 - Random Variables
+
+## Assignment 2 : One Particle Simulation As Per The Langevin Model
+
+Simulation of a Brownian particle using the Langevin equation in Python.
+
+The system models the motion of a particle under:
+
+- Friction (dissipation)
+- Random Gaussian thermal noise (fluctuations)
+
+The Langevin equation used:
+
+m(dv/dt) = -γv + η(t)
+
+### Python Code
+
+
+### Features
+
+- Velocity vs Time
+- Velocity Squared vs Time
+- Position vs Time
+- Position Squared vs Time
+
+### Parameters Used
+
+- Mass (m)
+- Friction coefficient (γ)
+- Time step (dt)
+- Thermal energy (kBT)
+
+### Sample Output
+
+![Langevin Output](langevin_output.png)
+
+## Concepts Used
+
+- Brownian Motion
+- Langevin Equation
+- Gaussian Noise
+- Fluctuation-Dissipation
+- Statistical Mechanics
