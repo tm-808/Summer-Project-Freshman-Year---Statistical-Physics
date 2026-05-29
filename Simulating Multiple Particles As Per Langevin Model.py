@@ -2,11 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# -----------------------------
-# PARAMETERS
-# -----------------------------
-
-n_particles = 500 # change to 3, 4, or 10
+n_particles = 500 #number of particles
 
 m = 1.0
 gamma = 7.5
@@ -16,16 +12,9 @@ kBT = 10
 
 n_steps = int(T / dt)
 
-# -----------------------------
-# INITIAL CONDITIONS
-# -----------------------------
-
+#For Multiple Particles
 x = np.zeros(n_particles)
 v = np.zeros(n_particles)
-
-# -----------------------------
-# STORAGE LISTS
-# -----------------------------
 
 time = []
 
@@ -35,29 +24,17 @@ avg_velocity_sq = []
 avg_position = []
 avg_position_sq = []
 
-# -----------------------------
-# SIMULATION LOOP
-# -----------------------------
-
+#Simulation Loop
 for step in range(n_steps):
 
     t = step * dt
 
-    # update each particle
     for i in range(n_particles):
-
-        # independent Gaussian noise
         eta = np.sqrt(
             2 * gamma * kBT * dt / m
         ) * np.random.normal(0, 1)
-
-        # velocity update
         v[i] = v[i] + (-gamma * v[i] / m) * dt + eta
-
-        # position update
         x[i] = x[i] + v[i] * dt
-
-    # store averages
     time.append(t)
 
     avg_velocity.append(np.mean(v))
@@ -65,11 +42,7 @@ for step in range(n_steps):
 
     avg_position.append(np.mean(x))
     avg_position_sq.append(np.mean(x**2))
-
-# -----------------------------
-# PLOTTING
-# -----------------------------
-
+# Plotting
 fig, axs = plt.subplots(2, 2, figsize=(14, 10))
 
 fig.suptitle(
@@ -78,25 +51,21 @@ fig.suptitle(
     fontsize=16
 )
 
-# <v> vs t
 axs[0,0].plot(time, avg_velocity)
 axs[0,0].set_xlabel("Time")
 axs[0,0].set_ylabel("<v>")
 axs[0,0].set_title("Average Velocity vs Time")
 
-# <v²> vs t
 axs[0,1].plot(time, avg_velocity_sq)
 axs[0,1].set_xlabel("Time")
 axs[0,1].set_ylabel("<v²>")
 axs[0,1].set_title("Average Velocity Squared vs Time")
 
-# <x> vs t
 axs[1,0].plot(time, avg_position)
 axs[1,0].set_xlabel("Time")
 axs[1,0].set_ylabel("<x>")
 axs[1,0].set_title("Average Position vs Time")
 
-# <x²> vs t
 axs[1,1].plot(time, avg_position_sq)
 axs[1,1].set_xlabel("Time")
 axs[1,1].set_ylabel("<x²>")
